@@ -10,5 +10,5 @@
       puts number
     end
   end  
-  puts fizzBuzz(num) 
+  puts fizzBuzz(number) 
 end
