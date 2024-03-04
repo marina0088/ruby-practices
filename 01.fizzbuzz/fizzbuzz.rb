@@ -6,7 +6,7 @@
       puts "Fizz"
     elsif number % 5 == 0
       puts "Buzz"
-    elseを
+    else
       puts number
     end
   end  
