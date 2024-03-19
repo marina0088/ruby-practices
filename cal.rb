@@ -22,15 +22,15 @@ year = current_date.year
 month = current_date.month
 
 OptionParser.new do |opt|
-  ## 引数の挙動を定義
-  opt.on('-m M', '--month M', Integer) do |m|
-    month = m
-  end
 
-  opt.on('-y Y', '--year Y', Integer) do |y|
-    year = y
-  end
-  ## 定義されたコマンドラインオプションを解析・実行
-  opt.parse!(ARGV)
+    opt.on('-m M', '--month M', Integer) do |m|
+        month = m
+    end
+
+    opt.on('-y Y', '--year Y', Integer) do |y|
+        year = y
+    end
+
+    opt.parse!(ARGV)
 end
 print_calendar(year, month)
