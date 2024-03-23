@@ -11,7 +11,7 @@ scores.each do |s|
     shots << 10
     shots << 0
   when '/'
-    shots << 10 - shots.last # スペア
+    shots << 10 - shots.last
   else
     shots << s.to_i
   end
@@ -24,22 +24,23 @@ end
 
 point = 0
 frames.each_with_index do |frame, index|
-  point += frame.sum # 1投目と2投目の合計を加算
+  point += frame.sum
 
-  # ストライク
-  if frame[0] == 10 && (index < 9)
-    point += frames[index + 1][0] + frames[index + 1][1] # 次のフレームの1投目と2投目を加算
-  end
+  if index < 9
 
-  # スペア
-  if frame.sum == 10 && frame[0] != 10 && (index < 9) # ストライクでないとき
-    point += frames[index + 1][0] # 次のフレームの1投目のみ加算
-  end
+    if frame[0] == 10
+      point += if frames[index + 1][0] == 10
+                 frames[index + 1][0] + frames[index + 2][0]
+               else
+                 frames[index + 1].sum
+               end
 
-  # 10フレーム目
-  if index == 9 && (frame[0] == 10 || frame.sum == 10) # ストライクまたはスペアの場合
-    # 3投目を打てる
-    point += frames[10][0]
+    elsif frame.sum == 10 && frame[0] != 10
+      point += frames[index + 1][0]
+    end
+  elsif index == 9
+
+    point += frames[10].last if (frame[0] == 10 || frame.sum == 10) && (frames[10].size == 3 && frames[10].sum > 10)
   end
 end
 
