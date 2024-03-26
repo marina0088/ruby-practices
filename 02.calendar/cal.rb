@@ -29,7 +29,7 @@ OptionParser.new do |opt|
   opt.on('-y Y', '--year Y', Integer) do |y|
     year = y
   end
-  ## 定義されたコマンドラインオプションを解析・実行
+  # 定義されたコマンドラインオプションを解析・実行
   opt.parse!(ARGV)
 end
 print_calendar(year, month)
