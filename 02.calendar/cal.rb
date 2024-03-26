@@ -21,7 +21,7 @@ year = current_date.year
 month = current_date.month
 
 OptionParser.new do |opt|
-  ## 引数の挙動を定義
+  # 引数の挙動を定義
   opt.on('-m M', '--month M', Integer) do |m|
     month = m
   end
