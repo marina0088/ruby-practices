@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-STRIKE_SCORE=10
+STRIKE_SCORE = 10
 score = ARGV[0]
 scores = score.split(',')
 
@@ -29,10 +29,10 @@ frames.each_with_index do |frame, index|
 
     if frame[0] == STRIKE_SCORE
       point += if next_frame[0] == STRIKE_SCORE
-        next_frame[0] + frames[index + 2][0]
-      else
-        next_frame.sum
-      end
+                 next_frame[0] + frames[index + 2][0]
+               else
+                 next_frame.sum
+               end
 
     elsif frame.sum == STRIKE_SCORE && frame[0] != STRIKE_SCORE
       point += next_frame[0]
